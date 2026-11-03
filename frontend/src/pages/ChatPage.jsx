@@ -15,6 +15,7 @@ import {
 } from "lucide-react";
 
 import ChatWindow from "../components/chat/ChatWindow";
+import API_URL from "../services/api";
 
 const STORAGE_KEY = "nattyai-chat-conversations";
 
@@ -252,7 +253,7 @@ function ChatPage() {
     setError("");
     console.log("Token available:", !!token);
     try {
-      const response = await fetch("http://localhost:5000/api/ai/chat", {
+      const response = await fetch(`${API_URL}/api/ai/chat`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

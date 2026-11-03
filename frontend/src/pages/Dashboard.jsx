@@ -15,6 +15,7 @@ import ChatPage from "./ChatPage";
 import SettingsPage from "./Settings";
 import { tools } from "../data/aiTools";
 import { useAuth } from "../context/AuthContext";
+import API_URL from "../services/api";
 
 const HISTORY_KEY = "nattyai-history";
 const MAX_HISTORY = 50;
@@ -83,7 +84,7 @@ function Dashboard() {
     setResult("");
 
     try {
-      const response = await fetch("http://localhost:5000/api/ai/generate", {
+      const response = await fetch(`${API_URL}/api/ai/generate`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { Sparkles, Mail, Lock, Eye, EyeOff, ArrowRight } from "lucide-react";
 
 import { useAuth } from "../context/AuthContext";
+import API_URL from "../services/api";
 
 function Login() {
   const navigate = useNavigate();
@@ -46,18 +47,15 @@ function Login() {
           setGoogleLoading(true);
 
           try {
-            const result = await fetch(
-              "http://localhost:5000/api/auth/google",
-              {
-                method: "POST",
-                headers: {
-                  "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                  credential: response.credential,
-                }),
+            const result = await fetch(`${API_URL}/api/auth/google`, {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
               },
-            );
+              body: JSON.stringify({
+                credential: response.credential,
+              }),
+            });
 
             const data = await result.json();
 
@@ -106,7 +104,7 @@ function Login() {
     setLoading(true);
 
     try {
-      const response = await fetch("http://localhost:5000/api/auth/login", {
+      const response = await fetch(`${API_URL}/api/auth/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
