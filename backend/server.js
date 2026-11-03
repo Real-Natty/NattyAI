@@ -11,12 +11,17 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 if (!process.env.GROQ_API_KEY) {
-  throw new Error("GROQ_API_KEY is missing from your .env file.");
+  throw new Error("GROQ_API_KEY is missing from your environment variables.");
 }
+
+const allowedOrigins = ["http://localhost:5173", process.env.CLIENT_URL].filter(
+  Boolean,
+);
 
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: allowedOrigins,
+    credentials: true,
   }),
 );
 
