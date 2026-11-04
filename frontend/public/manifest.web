@@ -1,0 +1,19 @@
+{
+  "id": "/",
+  "name": "NattyAI",
+  "short_name": "NattyAI",
+  "description": "Your intelligent AI writing and content generation assistant.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#13111c",
+  "theme_color": "#13111c",
+  "icons": [
+    {
+      "src": "/ai-logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
