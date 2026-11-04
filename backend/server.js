@@ -37,11 +37,22 @@ app.use("/api/auth", authRoutes);
 app.use(errorHandler);
 
 const startServer = async () => {
-  await connectDB();
+  try {
+    console.log("Starting NattyAI backend...");
+    console.log("MONGO_URI exists:", Boolean(process.env.MONGO_URI));
+    console.log("GROQ_API_KEY exists:", Boolean(process.env.GROQ_API_KEY));
 
-  app.listen(PORT, () => {
-    console.log(`NattyAI server running on port ${PORT}`);
-  });
+    await connectDB();
+
+    app.listen(PORT, () => {
+      console.log(`NattyAI server running on port ${PORT}`);
+    });
+  } catch (error) {
+    console.error("SERVER STARTUP ERROR:", error);
+    process.exit(1);
+  }
 };
+
+startServer();
 
 startServer();
