@@ -197,6 +197,7 @@
   flex-direction: column;
   gap: 4px;
   min-width: 0;
+  margin-bottom: 100px;
 }
 
 .profile-info strong {
@@ -211,6 +212,8 @@
 .profile-settings {
   margin-left: auto;
   color: #777287;
+  background: none;
+  border: none;
 }
 
 .main-content {
@@ -2691,17 +2694,35 @@
   color: #ffffff;
 }
 /* Scrollable Sidebar */
+
 .sidebar {
+  width: 255px;
   height: 100vh;
-  overflow-y: auto;
-  overflow-x: hidden;
+  position: fixed;
+  inset: 0 auto 0 0;
+  z-index: 20;
   display: flex;
   flex-direction: column;
+  padding: 27px 17px 15px;
+  background: #100e1a;
+  border-right: 1px solid #252133;
 
+  overflow-y: auto;
+  overflow-x: hidden;
   scrollbar-width: thin;
   scrollbar-color: #454568 transparent;
 }
-
+.sidebar-bottom {
+  margin-top: 25px;
+  flex-shrink: 0;
+}
+.profile-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+  flex: 1;
+}
 .sidebar::-webkit-scrollbar {
   width: 5px;
 }
@@ -2718,13 +2739,194 @@
 .sidebar::-webkit-scrollbar-thumb:hover {
   background: #7777a5;
 }
-
-.sidebar-nav {
-  flex: 1;
-  min-height: 0;
-  overflow: visible;
+/* SETTINGS PAGE */
+.settings-page {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 35px 30px 60px;
+  color: #fff;
 }
 
-.sidebar-bottom {
+.settings-heading {
+  margin-bottom: 30px;
+}
+
+.settings-eyebrow {
+  color: #a78bfa;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.settings-heading h1 {
+  font-size: 30px;
+  margin: 10px 0;
+  font-weight: 700;
+}
+
+.settings-heading p {
+  color: #9291a5;
+  font-size: 14px;
+}
+
+/* SETTINGS CARDS */
+.settings-card {
+  background: #171625;
+  border: 1px solid #29273d;
+  border-radius: 16px;
+  padding: 24px;
+  margin-bottom: 20px;
+}
+
+.settings-card-heading {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 25px;
+}
+
+.settings-card-heading > svg {
+  color: #a78bfa;
+  background: #29213f;
+  padding: 9px;
+  box-sizing: content-box;
+  border-radius: 10px;
+}
+
+.settings-card-heading h2,
+.settings-logout-card h2 {
+  font-size: 16px;
+  margin: 0 0 5px;
+}
+
+.settings-card-heading p,
+.settings-logout-card p {
+  color: #9291a5;
+  font-size: 13px;
+  margin: 0;
+}
+
+/* PROFILE */
+.settings-profile {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding-bottom: 22px;
+  border-bottom: 1px solid #29273d;
+  margin-bottom: 20px;
+}
+
+.settings-avatar {
+  width: 58px;
+  height: 58px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #8b5cf6, #6366f1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 23px;
+  font-weight: 700;
+  color: white;
+  overflow: hidden;
   flex-shrink: 0;
+}
+
+.settings-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.settings-profile h3 {
+  font-size: 16px;
+  margin: 0 0 6px;
+}
+
+.settings-profile span {
+  color: #9291a5;
+  font-size: 12px;
+}
+
+/* ACCOUNT DETAILS */
+.settings-detail {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 0;
+}
+
+.settings-detail > svg {
+  color: #a78bfa;
+}
+
+.settings-detail div {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.settings-detail span {
+  color: #9291a5;
+  font-size: 12px;
+}
+
+.settings-detail strong {
+  color: #eeeef5;
+  font-size: 13px;
+  font-weight: 500;
+  overflow-wrap: anywhere;
+}
+
+/* LOGOUT */
+.settings-logout-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.settings-logout-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  padding: 11px 18px;
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  border-radius: 10px;
+  color: #f87171;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.settings-logout-button:hover {
+  background: #ef4444;
+  color: white;
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+  .settings-page {
+    padding: 25px 16px 40px;
+  }
+
+  .settings-heading h1 {
+    font-size: 25px;
+  }
+
+  .settings-card {
+    padding: 18px;
+  }
+
+  .settings-logout-card {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .settings-logout-button {
+    width: 100%;
+  }
 }
