@@ -16,6 +16,12 @@ if (!process.env.GROQ_API_KEY) {
   throw new Error("GROQ_API_KEY is missing from your environment variables.");
 }
 
+// Google popup compatibility
+app.use((req, res, next) => {
+  res.setHeader("Cross-Origin-Opener-Policy", "same-origin-allow-popups");
+  next();
+});
+
 // Allowed frontend origins
 const allowedOrigins = [
   "http://localhost:5173",
@@ -23,6 +29,7 @@ const allowedOrigins = [
   "https://natty-ai.vercel.app",
 ].filter(Boolean);
 
+// CORS configuration
 app.use(
   cors({
     origin: allowedOrigins,
@@ -50,7 +57,6 @@ const startServer = async () => {
     console.log("Starting NattyAI backend...");
     console.log("MONGO_URI exists:", Boolean(process.env.MONGO_URI));
     console.log("GROQ_API_KEY exists:", Boolean(process.env.GROQ_API_KEY));
-    console.log("CLIENT_URL:", process.env.CLIENT_URL);
 
     await connectDB();
 
