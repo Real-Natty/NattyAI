@@ -2631,3 +2631,62 @@
     flex-direction: column;
   }
 }
+/* Image Generator Dark Theme Fix */
+
+.image-prompt-card {
+  background: #171725 !important;
+  border: 1px solid #292940;
+  color: #ffffff;
+}
+
+.image-prompt-card label {
+  color: #ffffff;
+}
+
+.image-prompt-card textarea {
+  background: #10101c !important;
+  color: #ffffff !important;
+  border: 1px solid #34344d;
+  caret-color: #a78bfa;
+}
+
+.image-prompt-card textarea::placeholder {
+  color: #85859e !important;
+}
+
+.image-prompt-card textarea:focus {
+  outline: none;
+  border-color: #8b5cf6;
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.15);
+}
+
+.image-prompt-footer {
+  color: #a1a1b5;
+}
+
+.image-preview-card {
+  background: #171725 !important;
+  border: 1px solid #292940;
+  color: #ffffff;
+}
+
+.image-empty-state h3 {
+  color: #ffffff;
+}
+
+.image-empty-state p {
+  color: #a1a1b5;
+}
+
+.generated-image-container {
+  background: #10101c;
+}
+
+.generated-image-footer {
+  background: #171725;
+  color: #ffffff;
+}
+
+.generated-image-footer span {
+  color: #ffffff;
+}
