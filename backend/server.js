@@ -19,11 +19,10 @@ if (!process.env.GROQ_API_KEY) {
 // Allowed frontend origins
 const allowedOrigins = [
   "http://localhost:5173",
-  process.env.CLIENT_URL,
-  "https://nattyai.vercel.app",
+  "https://nattyai-frontend.onrender.com",
+  "https://natty-ai.vercel.app",
 ].filter(Boolean);
 
-// CORS configuration
 app.use(
   cors({
     origin: allowedOrigins,
