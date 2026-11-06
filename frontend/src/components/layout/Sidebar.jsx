@@ -9,6 +9,7 @@ import {
   ChevronRight,
   MessageSquare,
   PanelLeftClose,
+  Image,
 } from "lucide-react";
 
 import { tools } from "../../data/aiTools";
@@ -26,6 +27,8 @@ function Sidebar({
   showChat,
   onOpenSettings,
   showSettings,
+  onOpenImageGenerator,
+  showImageGenerator,
 }) {
   const { user } = useAuth();
   return (
@@ -95,6 +98,13 @@ function Sidebar({
           >
             <MessageSquare size={19} />
             <span>AI Chat</span>
+          </button>
+          <button
+            className={`nav-item ${showImageGenerator ? "active" : ""}`}
+            onClick={onOpenImageGenerator}
+          >
+            <Image size={19} />
+            <span>Image Generator</span>
           </button>
 
           <div className="nav-section-label">AI TOOLS</div>

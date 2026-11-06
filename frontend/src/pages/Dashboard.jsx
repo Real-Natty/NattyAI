@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { PanelLeft } from "lucide-react";
+import { PanelLeft, Image as ImageIcon } from "lucide-react";
 
 import Sidebar from "../components/layout/Sidebar";
 import Topbar from "../components/layout/Topbar";
@@ -16,6 +16,7 @@ import SettingsPage from "./Settings";
 import { tools } from "../data/aiTools";
 import { useAuth } from "../context/AuthContext";
 import API_URL from "../services/api";
+import ImageGenerator from "../components/imageGenerator/ImageGenerator";
 
 const HISTORY_KEY = "nattyai-history";
 const MAX_HISTORY = 50;
@@ -45,6 +46,7 @@ function Dashboard() {
   const [showHistory, setShowHistory] = useState(false);
   const [showChat, setShowChat] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
+  const [showImageGenerator, setShowImageGenerator] = useState(false);
 
   const selectedTool = tools.find((tool) => tool.id === activeTool);
 
@@ -73,6 +75,7 @@ function Dashboard() {
     setShowHistory(false);
     setShowChat(false);
     setShowSettings(false);
+    setShowImageGenerator(false);
   }
 
   async function handleGenerate() {
@@ -178,6 +181,13 @@ function Dashboard() {
     setShowHistory(false);
     setMobileMenu(false);
   }
+  function openImageGenerator() {
+    setShowImageGenerator(true);
+    setShowChat(false);
+    setShowHistory(false);
+    setShowSettings(false);
+    setMobileMenu(false);
+  }
 
   function toggleSidebar() {
     if (window.innerWidth <= 768) {
@@ -202,6 +212,8 @@ function Dashboard() {
         showChat={showChat}
         onOpenSettings={openSettings}
         showSettings={showSettings}
+        onOpenImageGenerator={openImageGenerator}
+        showImageGenerator={showImageGenerator}
       />
 
       <main className="main-content">
@@ -223,6 +235,8 @@ function Dashboard() {
             <SettingsPage />
           ) : showChat ? (
             <ChatPage />
+          ) : showImageGenerator ? (
+            <ImageGenerator />
           ) : showHistory ? (
             <HistorySection
               history={history}
